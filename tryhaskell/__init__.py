@@ -10,7 +10,7 @@ import requests
 
 
 class TryHaskell:
-    Result = namedtuple('TryHaskellResult', 'ok, expr, files, stdout, type, value')
+    Result = namedtuple('Result', 'ok, expr, files, stdout, type, value')
 
     class Error(Exception):
         pass
