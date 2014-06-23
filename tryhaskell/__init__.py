@@ -76,9 +76,7 @@ class TryHaskell:
             out.append('\n'.join(result.stdout))
         if not cls._is_function_value(result.value):
             out.append(result.value)
-        if not out:
-            out.append(':: ' + result.type)
-        return '\n'.join(out).strip()
+        return '\n'.join(out).strip() or ':: ' + result.type
 
     @classmethod
     def repl(cls):
@@ -87,8 +85,17 @@ class TryHaskell:
             while True:
                 sys.stdout.write('> ')
                 sys.stdout.flush()
-                exp = sys.stdin.readline().strip()
-                if exp:
+                exp = sys.stdin.readline()
+                # Trap Ctrl+D
+                if not exp:
+                    break
+                exp = exp.strip()
+                if exp in ['exit', 'quit']:
+                    break
+                elif exp.startswith(':t'):
+                    exp = exp[2:].strip()
+                    print(exp + ' :: ' + cls.get(exp).type)
+                elif exp:
                     print(cls.eval(exp))
         except KeyboardInterrupt:
             pass
