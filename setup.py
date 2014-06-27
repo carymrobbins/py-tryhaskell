@@ -11,7 +11,7 @@ setup(
     url="https://github.com/carymrobbins/py-tryhaskell",
     packages=find_packages(),
     description="Python client for tryhaskell.org",
-    license=open('LICENSE').read(),
+    license='BSD3',
     install_requires=[
         'requests',
     ],
