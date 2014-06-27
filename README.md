@@ -24,7 +24,7 @@ Result(ok=True, expr=u'liftM2 (+)', files={}, stdout=[], type=u'(Monad m, Num r)
     u'value': u'[2,4,6]'
 }}
 >>> TryHaskell.eval('foobar')
-u"Not in scope: `foobar'"`
+u"Not in scope: `foobar'"
 >>> TryHaskell.get('foobar')
 Result(ok=False, expr='', files={}, stdout='', type='', value=u"Not in scope: `foobar'\n")
 >>> TryHaskell.raw('foobar')
@@ -43,5 +43,5 @@ Press Ctrl+C to exit the repl.
 > [x*2 | x <- [1,2,3]]
 [2,4,6]
 > foobar
-Not in scope: `foobar'`]
+Not in scope: `foobar'
 ```
