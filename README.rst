@@ -49,3 +49,5 @@ You can test expressions easily using the repl -
     [4,8]
     λ foobar
     Not in scope: `foobar'
+    λ :t putStrLn "foo"
+    putStrLn "foo" :: IO ()
