@@ -89,14 +89,16 @@ class TryHaskell:
         :param TryHaskell.Result result: Parse result of JSON data.
         :rtype: str|unicode
         """
-        if result.stdout:
-            out = '\n'.join(result.stdout)
-            if result.value and result.value != '()':
-                return '\n'.join([out, result.value])
-            return out
-        if result.value and not cls._is_function_value(result.value):
-            return result.value
-        return cls.show_type(result)
+        if result.ok:
+            if result.stdout:
+                out = '\n'.join(result.stdout)
+                if result.value and result.value != '()':
+                    return '\n'.join([out, result.value])
+                return out
+            if result.value and not cls._is_function_value(result.value):
+                return result.value
+            return cls.show_type(result)
+        return result.value
 
     @classmethod
     def show_type(cls, result):
@@ -104,7 +106,9 @@ class TryHaskell:
         :param TryHaskell.Result result: Parse result of JSON data.
         :rtype: str|unicode
         """
-        return ' :: '.join([result.expr, result.type])
+        if result.ok:
+            return ' :: '.join([result.expr, result.type])
+        return result.value
 
     @classmethod
     def repl(cls):
