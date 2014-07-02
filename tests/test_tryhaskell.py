@@ -46,6 +46,16 @@ class IntegrationTest(unittest.TestCase):
         result = TryHaskell.get('foobar')
         self.assertFalse(result.ok)
 
+    def test_files(self):
+        result = TryHaskell.get('writeFile "/foo" "bar"')
+        result = TryHaskell.get('readFile "/foo"', files=result.files)
+        self.assertEqual(result.value, '"bar"')
+
+    def test_stdin(self):
+        # Stdin is not currently implemented, but using its functions
+        # should not crash.
+        TryHaskell.get('getLine')
+
 
 if __name__ == '__main__':
     unittest.main()

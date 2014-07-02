@@ -5,7 +5,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="tryhaskell",
-    version="0.1.0",
+    version=__import__('tryhaskell').__version__,
     author="Cary Robbins",
     author_email="carymrobbins@gmail.com",
     url="https://github.com/carymrobbins/py-tryhaskell",
