@@ -7,12 +7,14 @@ Installation
 ------------
 
 .. code-block:: bash
+
     pip install tryhaskell`
 
 Usage
 -----
 
 .. code-block:: python
+
     >>> from tryhaskell import TryHaskell
     >>> TryHaskell.eval('1+2')
     u'3'
@@ -37,6 +39,7 @@ Usage
 You can test expressions easily using the repl -
 
 .. code-block:: haskell
+
     $ python -m tryhaskell
     λ 1+2
     3
