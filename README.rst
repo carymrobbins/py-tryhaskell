@@ -8,7 +8,7 @@ Installation
 
 .. code-block:: bash
 
-    pip install tryhaskell`
+    pip install tryhaskell
 
 Usage
 -----
@@ -38,7 +38,7 @@ Usage
 
 You can test expressions easily using the repl -
 
-.. code-block:: haskell
+.. code-block::
 
     $ python -m tryhaskell
     λ 1+2
